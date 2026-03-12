@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['puppeteer-core', 'redis'],
-  },
+  serverExternalPackages: ['puppeteer-core', 'redis'],
 };
 
 module.exports = nextConfig;
