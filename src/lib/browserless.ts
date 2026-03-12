@@ -40,9 +40,12 @@ export async function createSession(targetUrl: string = AVA_URL): Promise<Browse
   // Tenta 60s primeiro (plano Starter), com fallback para 30s (plano Free/Prototyping)
   let reconnectEndpoint: string | null = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const cdpAny = cdp as any;
+
   for (const timeout of [60000, 30000, 10000]) {
     try {
-      const result = await cdp.send('Browserless.reconnect', { timeout }) as {
+      const result = await cdpAny.send('Browserless.reconnect', { timeout }) as {
         browserWSEndpoint: string | null;
         error: string | null;
       };

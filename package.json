@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.2.4",
-    "react": "^19",
-    "react-dom": "^19",
+    "next": "15.5.12",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "framer-motion": "^11.3.0",
     "redis": "^4.6.14",
     "puppeteer-core": "^22.12.0",
@@ -28,6 +28,6 @@
     "autoprefixer": "^10.0.1",
     "postcss": "^8",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4"
+    "eslint-config-next": "15.5.12"
   }
 }
