@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #08080c;
+  --bg-secondary: #12121a;
+  --cyan: #00ffff;
+  --magenta: #ff00ff;
+  --yellow: #ffff00;
+  --purple: #bf5af2;
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  --border: #27272a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scanline moving */
+@keyframes scanline {
+  0% { top: -2px; }
+  100% { top: 100vh; }
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 10px var(--cyan); }
+  50% { text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan); }
+}
+
+.cursor-blink {
+  display: inline-block;
+  animation: blink 1.2s step-end infinite;
+}
+
+.glow-cyan {
+  text-shadow: 0 0 10px var(--cyan);
+  color: var(--cyan);
+}
+
+.glow-purple {
+  text-shadow: 0 0 10px var(--purple);
+  color: var(--purple);
+}
+
+.glow-magenta {
+  text-shadow: 0 0 10px var(--magenta);
+  color: var(--magenta);
+}
+
+.glow-title {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Separator */
+.separator {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Section header */
+.section-header {
+  color: var(--text-secondary);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Tag styles */
+.tag-urgent {
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  font-size: 10px;
+  padding: 1px 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tag-days {
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-size: 10px;
+  padding: 1px 6px;
+  letter-spacing: 0.1em;
+}
