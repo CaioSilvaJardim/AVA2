@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { nanoid } from 'nanoid';
-import { createSession, getPopupUrl } from '@/lib/browserless';
+import { createSession } from '@/lib/browserless';
 import { saveSession } from '@/lib/redis';
 
 export const runtime = 'nodejs';
@@ -14,8 +14,6 @@ export async function POST(_req: NextRequest) {
       'https://ava.escolaparque.g12.br'
     );
 
-    const popupUrl = getPopupUrl(wsEndpoint) || liveUrl;
-
     await saveSession({
       visitorId,
       wsEndpoint,
@@ -26,7 +24,8 @@ export async function POST(_req: NextRequest) {
     return NextResponse.json({
       success: true,
       visitorId,
-      popupUrl,
+      // liveUrl gerado pelo Browserless.liveURL — URL real e funcional do viewer
+      popupUrl: liveUrl,
       liveUrl,
     });
   } catch (error) {
