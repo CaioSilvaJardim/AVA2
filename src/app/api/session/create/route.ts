@@ -14,6 +14,19 @@ export async function POST(_req: NextRequest) {
       'https://ava.escolaparque.g12.br'
     );
 
+    // Log detalhado para debug
+    console.log('[session/create] wsEndpoint:', wsEndpoint);
+    console.log('[session/create] liveUrl:', liveUrl);
+    console.log('[session/create] liveUrl type:', typeof liveUrl);
+
+    if (!liveUrl || typeof liveUrl !== 'string' || !liveUrl.startsWith('http')) {
+      console.error('[session/create] liveUrl inválida:', liveUrl);
+      return NextResponse.json(
+        { success: false, error: `Browserless retornou liveUrl inválida: "${liveUrl}"` },
+        { status: 500 }
+      );
+    }
+
     await saveSession({
       visitorId,
       wsEndpoint,
@@ -24,7 +37,6 @@ export async function POST(_req: NextRequest) {
     return NextResponse.json({
       success: true,
       visitorId,
-      // liveUrl gerado pelo Browserless.liveURL — URL real e funcional do viewer
       popupUrl: liveUrl,
       liveUrl,
     });
